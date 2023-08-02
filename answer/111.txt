@@ -1,0 +1,18 @@
+def $env = f : 'a 'b.'a->'b->'a;
+f: 'a 'b.'a->'b->'a |- f 3 true + f 2 4 : int
+by T-Plus {
+  $env |- f 3 true : int by T-App {
+    $env |- f 3 : bool -> int by T-App {
+      $env |- f : int -> bool -> int by T-Var {};
+      $env |- 3 : int by T-Int {}
+    };
+    $env |- true : bool by T-Bool {};
+  };
+  $env |- f 2 4 : int by T-App {
+    $env |- f 2 : int -> int by T-App {
+      $env |- f : int -> int -> int by T-Var {};
+      $env |- 2 : int by T-Int {}
+    };
+    $env |- 4 : int by T-Int {};
+  };
+}
