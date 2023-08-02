@@ -1,0 +1,6 @@
+.DS_Store
+resource/
+*.out
+*.cmo
+*.cmi
+*.swp
